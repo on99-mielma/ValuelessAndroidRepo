@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ovo4thapp</string>
+    <string name="RecordButtonInit">RecordInit</string>
+    <string name="PlayButtonInit">PlayInit</string>
+    <string name="startRecord">RecordStart</string>
+    <string name="stopRecord">RecordStop</string>
+    <string name="startPlay">PlayingNow</string>
+    <string name="stopPlay">PlayStop</string>
+</resources>

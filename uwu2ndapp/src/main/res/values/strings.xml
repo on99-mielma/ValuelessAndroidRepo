@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">AnyName1</string>
+    <string name="forSwitch">Black OR White</string>
+    <string name="forSwitchOn">White</string>
+    <string name="forSwitchOff">Black</string>
+    <string name="textview">TextView</string>
+    <string name="initTV">Initing…</string>
+    <string name="buttonInit">BUTTON^^</string>
+</resources>
