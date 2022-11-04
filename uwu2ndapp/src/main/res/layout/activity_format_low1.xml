@@ -20,6 +20,7 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="156dp"
+            android:contentDescription="@string/temp"
             app:srcCompat="@drawable/diy001" />
 
         <ProgressBar
@@ -28,10 +29,17 @@
             android:layout_width="match_parent"
             android:layout_height="63dp" />
 
-        <SurfaceView
-            android:id="@+id/surfaceViewl1"
+        <androidx.camera.view.PreviewView
+            android:id="@+id/viewFinder"
             android:layout_width="match_parent"
-            android:layout_height="416dp" />
+            android:layout_height="371dp" />
+
+        <TextView
+            android:id="@+id/textViewl10"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:text="@string/temp"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
