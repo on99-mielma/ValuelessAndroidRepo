@@ -4,4 +4,6 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_on99">on99</string>
+    <string name="SwitchInit">Switch here!</string>
+    <string name="TextViewInit">TextView here!</string>
 </resources>

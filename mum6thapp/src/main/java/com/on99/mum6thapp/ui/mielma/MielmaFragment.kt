@@ -10,7 +10,9 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
+import androidx.lifecycle.lifecycleScope
 import com.on99.mum6thapp.databinding.FragmentOn99Binding
+import kotlinx.coroutines.launch
 
 class MielmaFragment : Fragment(){
 
@@ -30,10 +32,23 @@ class MielmaFragment : Fragment(){
 
         val root: View = binding.root
 
+        val inputTextView: TextView = binding.input0
+
         val theSwitch: Switch = binding.on99switch
         theSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked){
                 Log.e(tag,"open now!")
+                if (inputTextView.text.isNullOrEmpty()){
+                    Log.e(tag,"isNullOrEmpty")
+                }
+                else if (inputTextView.text.length == 0){
+                    Log.e(tag, "length is zero!")
+                }
+                else{
+                    lifecycleScope.launch {
+                        mielmaViewmodel.fetchSocket(inputTextView.text.toString())
+                    }
+                }
             }
             else{
                 Log.e(tag,"close now!")
@@ -42,8 +57,13 @@ class MielmaFragment : Fragment(){
         mielmaViewmodel.text.observe(viewLifecycleOwner){
             theSwitch.text = it
         }
+        val outputTextView:TextView = binding.showOutput0
+        mielmaViewmodel.socketData.observe(viewLifecycleOwner){
+            outputTextView.text = it
+        }
         return root
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
