@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
 //            activity?.supportFragmentManager?.beginTransaction()
 //                ?.replace(R.id.fragment_home_set_layout,NotificationsFragment(),null)
 //                ?.commit()
-            findNavController().navigate(R.id.navigation_notifications)
+            findNavController().navigate(R.id.navigation_notifications)//https://developer.android.google.cn/guide/navigation/navigation-navigate?hl=en
         }
 
 
