@@ -4,10 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.on99.mum6thapp.R
 import com.on99.mum6thapp.databinding.FragmentHomeBinding
+import com.on99.mum6thapp.ui.notifications.NotificationsFragment
 
 class HomeFragment : Fragment() {
 
@@ -32,6 +36,16 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+
+        val button0:Button = binding.button0
+        button0.setOnClickListener {
+//            activity?.supportFragmentManager?.beginTransaction()
+//                ?.replace(R.id.fragment_home_set_layout,NotificationsFragment(),null)
+//                ?.commit()
+            findNavController().navigate(R.id.navigation_notifications)
+        }
+
+
         return root
     }
 

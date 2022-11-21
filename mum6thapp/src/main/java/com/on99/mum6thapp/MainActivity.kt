@@ -16,6 +16,17 @@ import com.on99.mum6thapp.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    /*
+    例如，假设某个布局文件的名称为 result_profile.xml：
+    所生成的绑定类的名称就为 ResultProfileBinding。
+
+    so
+    我们生成了名叫activity_main.xml的文件
+    那么生成的绑定类的名称就是ActivityMainBinding
+
+    and
+    !!下划线命名
+     */
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications,R.id.navigation_on99
             )
-        )
+        )//menu.bottom_nav_menu
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
