@@ -33,14 +33,13 @@ class NotificationsViewModel : ViewModel() {
         withContext(Dispatchers.Main){
             _text.value = "Updating!!..."
 //            run()
-            _text.value = run()
-            _text.value = run()
+            _text.value = run_sync()
         }
     }
 
     private var str:String ="null"
 
-    suspend fun run():String = withContext(Dispatchers.IO){
+    suspend fun run_async():String = withContext(Dispatchers.IO){
         delay(3000)
 //        var str:String? = null
         val request = Request.Builder()
@@ -60,6 +59,18 @@ class NotificationsViewModel : ViewModel() {
                 }
             }
         })
+        str
+    }
+    suspend fun run_sync():String = withContext(Dispatchers.IO){
+        delay(1500)
+        val request = Request.Builder()
+            .url("http://192.168.31.233:8080/users/")
+            .build()
+        client.newCall(request).execute().use {
+            if(!it.isSuccessful) throw IOException("Unexpected code $it")
+            str = it.body!!.string()
+            Log.e("Notifications", str)
+        }
         str
     }
 }
