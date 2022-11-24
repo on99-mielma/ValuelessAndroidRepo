@@ -1,0 +1,8 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Jet7thlpp</string>
+    <string name="show_less" tools:ignore="ExtraTranslation">Show Less</string>
+    <string name="show_more" tools:ignore="ExtraTranslation">Show More</string>
+    <string name="wcnmm" tools:ignore="ExtraTranslation">真傻逼啊</string>
+    <string name="wcnmb" tools:ignore="ExtraTranslation">你是sb?</string>
+    <string name="fucku">整活？</string>
+</resources>

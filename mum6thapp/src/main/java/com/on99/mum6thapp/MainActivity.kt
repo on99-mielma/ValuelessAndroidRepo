@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity() {
                 this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
             )
         }
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
