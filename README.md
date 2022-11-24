@@ -6,7 +6,7 @@
 3. Follow [实现预览](https://developer.android.google.cn/training/camerax/preview#kotlin) to learn how to create a basic CameraX app
 4. Follow [MediaRecorder overview](https://developer.android.google.cn/guide/topics/media/mediarecorder?hl=en) to learn how to create a basic MediaRecorder app  
 5. Socket
-6. Use Android Studio Default Sample and follow this -> [LiveDataSample](https://github.com/android/architecture-components-samples/tree/main/LiveDataSample) to make some useless function
-
+6. Use Android Studio Default Sample and follow this -> [LiveDataSample](https://github.com/android/architecture-components-samples/tree/main/LiveDataSample) to make some useless function  
+7. [学习下Jetpack Compose 基础知识](https://developer.android.google.cn/codelabs/jetpack-compose-basics?hl=zh-cn#0)
   
 ![ME](/uwu2ndapp/src/main/res/drawable/diy001.png)
