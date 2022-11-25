@@ -9,46 +9,47 @@ import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.*
-import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.on99.jet7thlpp.ui.theme.My1stAppTheme
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.navigation.compose.rememberNavController
+import com.on99.jet7thlpp.navigation.SetupNavGraph
+import com.on99.jet7thlpp.ui.theme.MielmaFour
+import com.on99.jet7thlpp.ui.theme.MielmaThree
+import kotlinx.coroutines.delay
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             My1stAppTheme {
+                val navController = rememberNavController()
                 // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-//                    Greeting("Android")
-                    Myapp1(modifier = Modifier.fillMaxSize())
-                }
+//                Surface(
+//                    modifier = Modifier.fillMaxSize(),
+//                    color = MaterialTheme.colorScheme.background
+//                ) {
+//                    Myapp1(modifier = Modifier.fillMaxSize())
+//                }
+                SetupNavGraph(navController = navController)
             }
         }
     }
 }
 
 @Composable
-fun OnboardingScreen(modifier: Modifier = Modifier,onContinueClicked: () -> Unit,){
-    // TODO: This state should be hoisted(状态提升)
+fun OnboardingScreen(modifier: Modifier = Modifier,onContinueClicked: () -> Unit){
 //    var shouldShowOnboarding by remember { mutableStateOf(true) }
     
     Column(
@@ -76,9 +77,20 @@ fun Myapp1(
 //    }
     var shouldShowOnboarding by rememberSaveable { mutableStateOf(true) }
 
-    Surface(modifier, color = MaterialTheme.colorScheme.background) {
+    Surface(
+        modifier = Modifier
+            .animateContentSize(
+                animationSpec = tween(
+                    durationMillis = 1000
+                )
+            ),
+        color = MaterialTheme.colorScheme.background
+    ) {
         if (shouldShowOnboarding) {
-            OnboardingScreen(onContinueClicked = { shouldShowOnboarding = false })
+            OnboardingScreen(onContinueClicked = {
+
+                shouldShowOnboarding = false
+            })
         } else {
             Greetings()
         }
@@ -187,14 +199,29 @@ private fun CardContent(name: String) {
         ) {
             Text(text = "Hello, ")
             Text(
-                text = name, style = MaterialTheme.typography.headlineMedium.copy(
-                    fontWeight = FontWeight.ExtraBold
+                text = name,
+                style = MaterialTheme.typography.headlineMedium.copy(
+                    fontWeight = FontWeight.ExtraBold,
+                    background = if (expanded) MielmaThree else MielmaFour
+                ),
+                modifier = Modifier
+                    .animateContentSize(
+                    animationSpec = tween(
+                        durationMillis = 500
+                    )
                 )
+//                color = if (expanded) MielmaThree else Color.White
+
             )
             if (expanded) {
                 Text(
-                    text = ("Composem ipsum color sit lazy, " +
-                            "padding theme elit, sed do bouncy. ").repeat(4),
+//                    text = ("Composem ipsum color sit lazy, " +
+//                            "padding theme elit, sed do bouncy. ").repeat(4),
+                    text = ("嗨，我只是想测试下分行罢了"+
+                            "至于结果我也不知道呢。\n").repeat(3),
+                    style = MaterialTheme.typography.bodyLarge.copy(
+                        fontWeight = FontWeight.ExtraLight
+                    )
                 )
             }
         }

@@ -14,3 +14,7 @@ val Navy = Color(0xFF073042)
 val Blue = Color(0xFF4285F4)
 val LightBlue = Color(0xFFD7EFFE)
 val Chartreuse = Color(0xFFEFF7CF)
+val MielmaOne = Color(0xFF0F3562)
+val MielmaTwo = Color(0xFFF03ED4)
+val MielmaThree = Color(0xFF159183)
+val MielmaFour = Color(0x00000000)//透明前两个十六进制是透明度

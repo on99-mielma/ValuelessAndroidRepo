@@ -40,7 +40,7 @@ private val LightColorScheme = lightColorScheme(
     onBackground = Color(0xFF1C1B1F),
     onSurface = Color(0xFF1C1B1F),
     */
-    surface = Blue,
+    surface = MielmaOne,
     onSurface = Color.White,
     primary = LightBlue,
     onPrimary = Navy
