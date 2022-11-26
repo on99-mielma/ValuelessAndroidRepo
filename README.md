@@ -7,6 +7,6 @@
 4. Follow [MediaRecorder overview](https://developer.android.google.cn/guide/topics/media/mediarecorder?hl=en) to learn how to create a basic MediaRecorder app  
 5. Socket
 6. Use Android Studio Default Sample and follow this -> [LiveDataSample](https://github.com/android/architecture-components-samples/tree/main/LiveDataSample) to make some useless function  
-7. [学习下Jetpack Compose 基础知识](https://developer.android.google.cn/codelabs/jetpack-compose-basics?hl=zh-cn#0) 以及 [CN用](https://www.bilibili.com/video/BV1tS4y177zK/) or [非CN用](https://youtu.be/SLZPgdek18o) 和一些有的没的  
+7. [学习下Jetpack Compose 基础知识](https://developer.android.google.cn/codelabs/jetpack-compose-basics?hl=zh-cn#0) 以及 [CN用1](https://www.bilibili.com/video/BV1tS4y177zK/) / [非CN用1](https://youtu.be/SLZPgdek18o) 以及 [CN用2](https://www.bilibili.com/video/BV1o94y1Q77g) / [非CN用2](https://youtu.be/XuZvHKwD_iM)  
   
 ![ME](/uwu2ndapp/src/main/res/drawable/diy001.png)
