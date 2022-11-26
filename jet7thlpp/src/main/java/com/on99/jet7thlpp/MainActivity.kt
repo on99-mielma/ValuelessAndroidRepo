@@ -19,10 +19,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.on99.jet7thlpp.ui.theme.My1stAppTheme
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.navigation.compose.rememberNavController
 import com.on99.jet7thlpp.navigation.SetupNavGraph
 import com.on99.jet7thlpp.ui.theme.MielmaFour
@@ -43,11 +46,14 @@ class MainActivity : ComponentActivity() {
 //                    Myapp1(modifier = Modifier.fillMaxSize())
 //                }
                 SetupNavGraph(navController = navController)
+
+
             }
         }
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun OnboardingScreen(modifier: Modifier = Modifier,onContinueClicked: () -> Unit){
 //    var shouldShowOnboarding by remember { mutableStateOf(true) }
@@ -57,12 +63,51 @@ fun OnboardingScreen(modifier: Modifier = Modifier,onContinueClicked: () -> Unit
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Welcome to the jungle")
+//        Text(text = "Welcome to the jungle")
+        var value by remember {
+            mutableStateOf(0)
+        }
+
+        CustomComponent(
+            indicatorValue = value,
+            maxIndicatorValue = 1000,
+//            indicatorStrokeCap = StrokeCap.Square
+        )
+
+        TextField(
+            value = value.toString(),
+            onValueChange = {
+                value = if (it.isNotEmpty()){
+//                    it.toInt()
+                    if(isInteger(it)){
+                        it.toInt()
+                    }else{
+                        0
+                    }
+                }else{
+                    0
+                }
+            },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Number
+            )
+        )
+
+
         Button(onClick = onContinueClicked, modifier = Modifier.padding(vertical = 15.dp)) {
             Text(text = "Continue")
         }
     }
 
+}
+
+fun isInteger(s: String): Boolean {
+    return try {
+        s.toInt()
+        true
+    } catch (e: NumberFormatException) {
+        false
+    }
 }
 
 @Composable
