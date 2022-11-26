@@ -46,7 +46,7 @@ fun AnimatedSplashScreen(navController:NavHostController){
         animationSpec = tween(
             durationMillis = 4000
         )
-    )
+    )//自己加的
     LaunchedEffect(key1 = true){
         startAnimation = true
         delay(4000)

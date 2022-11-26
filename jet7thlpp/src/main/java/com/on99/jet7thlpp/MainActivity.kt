@@ -4,6 +4,7 @@ import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.material.icons.Icons.Filled
 import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
@@ -226,7 +227,23 @@ fun Greeting(name: String) {
 @Composable
 private fun CardContent(name: String) {
     var expanded by remember { mutableStateOf(false) }
-
+    val textNumberColor by animateColorAsState(
+        targetValue = if (expanded) Color.Yellow else Color.White,
+        animationSpec = tween(
+            durationMillis = 750
+        )
+    )
+    val firstlineString:String = "Hello!"
+    val firstlineStringInChina:String = "你好!"
+//    val animatedFirstlineString by animateValueAsState(
+//        targetValue =if (expanded) firstlineStringInChina else firstlineString,
+//        typeConverter =
+//    )
+    var textFirstline by remember{
+        mutableStateOf(firstlineString)
+    }
+    val toIntName:Int = if(isInteger(name)) name.toInt() else 0
+    val haxName:String = if(toIntName!=0 && toIntName%3==0) "三的${toIntName/3}个整数倍" else name
     Row(
         modifier = Modifier
             .padding(12.dp)
@@ -242,22 +259,23 @@ private fun CardContent(name: String) {
                 .weight(1f)
                 .padding(12.dp)
         ) {
-            Text(text = "Hello, ")
+            Text(text = textFirstline)
             Text(
-                text = name,
+                text = haxName,
                 style = MaterialTheme.typography.headlineMedium.copy(
                     fontWeight = FontWeight.ExtraBold,
-                    background = if (expanded) MielmaThree else MielmaFour
                 ),
-                modifier = Modifier
-                    .animateContentSize(
-                    animationSpec = tween(
-                        durationMillis = 500
-                    )
-                )
+                color = textNumberColor
+//                modifier = Modifier
+//                    .animateContentSize(
+//                    animationSpec = tween(
+//                        durationMillis = 500
+//                    )
+//                )
 //                color = if (expanded) MielmaThree else Color.White
 
             )
+//            Text(text = "test!", style = MaterialTheme.typography.titleLarge)//引起变化的并非padding的改变而是Text组件的现身
             if (expanded) {
                 Text(
 //                    text = ("Composem ipsum color sit lazy, " +
@@ -270,7 +288,15 @@ private fun CardContent(name: String) {
                 )
             }
         }
-        IconButton(onClick = { expanded = !expanded }) {
+        IconButton(onClick = {
+            expanded = !expanded
+            if (textFirstline.equals(firstlineString)){
+                textFirstline = firstlineStringInChina
+            }
+            else{
+                textFirstline = firstlineString
+            }
+        }) {
             Icon(
                 imageVector = if (expanded) Filled.ExpandLess else Filled.ExpandMore,
                 contentDescription = if (expanded) {

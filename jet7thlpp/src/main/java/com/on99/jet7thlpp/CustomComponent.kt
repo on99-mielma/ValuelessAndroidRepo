@@ -26,24 +26,23 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.max
 
 @Composable
 fun CustomComponent(
     canvasSize: Dp = 300.dp,
     indicatorValue: Int = 0,
     maxIndicatorValue: Int = 100,
-    backgroundIndicatorColor: Color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f),
+    backgroundIndicatorColor: Color = MaterialTheme.colorScheme.surface.copy(alpha = 0.1f),
     backgroundIndicatorStrokeWidth: Float = 100f ,
     foregroundIndicatorColor: Color = MaterialTheme.colorScheme.primary,
     foregroundIndicatorStrokeWidth: Float = 100f,
     indicatorStrokeCap: StrokeCap = StrokeCap.Round,
     bigTextFontSize: TextUnit = MaterialTheme.typography.headlineMedium.fontSize,
-    bigTextColor: Color = MaterialTheme.colorScheme.onSurface,
+    bigTextColor: Color = MaterialTheme.colorScheme.surface,
     bigTextSuffix: String = "GB",
     smallText:String = "Still need",
     smallTextFontSize: TextUnit = MaterialTheme.typography.bodySmall.fontSize,
-    smallTextColor: Color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+    smallTextColor: Color = MaterialTheme.colorScheme.surface.copy(alpha = 0.7f)
 ){
     var allowedIndicatorValue by remember {
         mutableStateOf(maxIndicatorValue)
@@ -74,7 +73,7 @@ fun CustomComponent(
     )
 
     val animatedBigTextColor by animateColorAsState(
-        targetValue = if (allowedIndicatorValue == 0) MaterialTheme.colorScheme.onSurface.copy(
+        targetValue = if (allowedIndicatorValue == 0) MaterialTheme.colorScheme.surface.copy(
             alpha = 0.25f
         ) else bigTextColor,
         animationSpec = tween(
