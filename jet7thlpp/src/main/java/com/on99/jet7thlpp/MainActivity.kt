@@ -20,18 +20,20 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.on99.jet7thlpp.ui.theme.My1stAppTheme
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Flight
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.navigation.compose.rememberNavController
 import com.on99.jet7thlpp.navigation.SetupNavGraph
-import com.on99.jet7thlpp.ui.theme.MielmaFour
 import com.on99.jet7thlpp.ui.theme.MielmaThree
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -148,18 +150,71 @@ private fun Greetings(
 //    names: List<String> = listOf("bull shit", "shit on", "on me")
     names:List<String> = List(1000){"$it"}
 ){
+    val state = rememberLazyListState()
+    val showToTheTopButton by remember {
+        derivedStateOf {
+            state.firstVisibleItemIndex > 0
+        }
+    }
+    val coroutineScope = rememberCoroutineScope()
 //    Column(modifier = modifier.padding(vertical = 4.dp)) {
 //        for (name in names) {
 //            Greeting(name = name)
 //        }
 //    }
-    LazyColumn(modifier = modifier.padding(vertical = 4.dp)){
+    val boxAlpha = animateFloatAsState(
+        targetValue = if (showToTheTopButton) 1.0f else 0.0f,
+        animationSpec = tween(
+            durationMillis = 1500
+        )
+    )
+    LazyColumn(
+        state = state,
+        modifier = modifier.padding(vertical = 4.dp)
+    ){
         items(items = names){ name ->
             Greeting(name = name)
         }
     }
+    if (showToTheTopButton){
+        Box(//针对消失时不会有动画而是直接消失，我个人的建议是将Boolean变量调整到与颜色相关，即false为透明，true显现，同时令该按钮在false时不可用
+            modifier = Modifier
+                .height(47.dp)
+                .width(47.dp)
+                .padding(bottom = 20.dp)
+                .alpha(alpha = boxAlpha.value),
+            contentAlignment = Alignment.BottomCenter
+        ){
+            FloatingActionButton(
+                modifier = Modifier
+                    .height(45.dp)
+                    .width(45.dp)
+                    .padding(1.dp)
+                    .heightIn(max = 45.dp)
+                    .widthIn(max = 45.dp)
+                ,
+                onClick = {coroutineScope.launch {
+                    state.animateScrollToItem(
+                        index = 0
+                    )
+                }},
+                containerColor = MielmaThree,
+                shape = FloatingActionButtonDefaults.shape
+            ) {
+                Icon(Icons.Default.Flight,contentDescription = "TOP")
+            }
+        }
+    }
 }
-
+//    FloatingActionButton(onClick = {
+//        coroutineScope.launch {
+//            state.animateScrollToItem(
+//                index = 0
+//            )
+//        }
+//    }) {
+//
+//    }
 
 @Composable
 fun Greeting(name: String) {
@@ -233,8 +288,8 @@ private fun CardContent(name: String) {
             durationMillis = 750
         )
     )
-    val firstlineString:String = "Hello!"
-    val firstlineStringInChina:String = "你好!"
+    val firstlineString= "Hello!"
+    val firstlineStringInChina= "你好!"
 //    val animatedFirstlineString by animateValueAsState(
 //        targetValue =if (expanded) firstlineStringInChina else firstlineString,
 //        typeConverter =
