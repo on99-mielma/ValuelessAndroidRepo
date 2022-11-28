@@ -74,6 +74,9 @@ fun OnboardingScreen(modifier: Modifier = Modifier,onContinueClicked: () -> Unit
         CustomComponent(
             indicatorValue = value,
             maxIndicatorValue = 1000,
+            backgroundIndicatorColor = Color.Black.copy(alpha = 0.1f),
+            bigTextColor = Color.Black,
+            smallTextColor = Color.Black.copy(alpha = 0.7f)
 //            indicatorStrokeCap = StrokeCap.Square
         )
 
@@ -168,6 +171,14 @@ private fun Greetings(
             durationMillis = 1500
         )
     )
+    val FABColorAlpha by animateColorAsState(
+        targetValue = if (showToTheTopButton) MielmaThree.copy(
+            alpha = 1.0f
+        ) else MielmaThree.copy(alpha = 0.0f),
+        animationSpec = tween(
+            durationMillis = 1500
+        )
+    )
     LazyColumn(
         state = state,
         modifier = modifier.padding(vertical = 4.dp)
@@ -176,14 +187,14 @@ private fun Greetings(
             Greeting(name = name)
         }
     }
-    if (showToTheTopButton){
+//    if (showToTheTopButton){
         Box(//针对消失时不会有动画而是直接消失，我个人的建议是将Boolean变量调整到与颜色相关，即false为透明，true显现，同时令该按钮在false时不可用
             modifier = Modifier
                 .height(47.dp)
                 .width(47.dp)
                 .padding(bottom = 20.dp)
                 .alpha(alpha = boxAlpha.value),
-            contentAlignment = Alignment.BottomCenter
+            contentAlignment = Alignment.BottomCenter,
         ){
             FloatingActionButton(
                 modifier = Modifier
@@ -193,18 +204,32 @@ private fun Greetings(
                     .heightIn(max = 45.dp)
                     .widthIn(max = 45.dp)
                 ,
-                onClick = {coroutineScope.launch {
-                    state.animateScrollToItem(
-                        index = 0
-                    )
-                }},
-                containerColor = MielmaThree,
-                shape = FloatingActionButtonDefaults.shape
+                onClick = {
+                    if (showToTheTopButton){
+                        coroutineScope.launch {
+                            state.animateScrollToItem(
+                                index = 0
+                            )
+                        }
+                    }
+                    },
+                containerColor = FABColorAlpha,
+                shape = FloatingActionButtonDefaults.shape,
+                elevation = FloatingActionButtonDefaults.elevation(
+                    defaultElevation = 0.dp,
+                    pressedElevation = 0.dp,
+                    focusedElevation = 0.dp,
+                    hoveredElevation = 0.dp
+                )
             ) {
-                Icon(Icons.Default.Flight,contentDescription = "TOP")
+                Icon(
+                    Icons.Default.Flight,
+                    contentDescription = "TOP",
+                    tint = LocalContentColor.current.copy(boxAlpha.value)
+                )
             }
         }
-    }
+//    }
 }
 //    FloatingActionButton(onClick = {
 //        coroutineScope.launch {

@@ -73,7 +73,7 @@ fun CustomComponent(
     )
 
     val animatedBigTextColor by animateColorAsState(
-        targetValue = if (allowedIndicatorValue == 0) MaterialTheme.colorScheme.surface.copy(
+        targetValue = if (allowedIndicatorValue == 0) bigTextColor.copy(
             alpha = 0.25f
         ) else bigTextColor,
         animationSpec = tween(
