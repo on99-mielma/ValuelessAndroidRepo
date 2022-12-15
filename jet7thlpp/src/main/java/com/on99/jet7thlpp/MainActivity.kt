@@ -10,6 +10,7 @@ import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.*
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.*
@@ -32,7 +33,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.navigation.compose.rememberNavController
 import com.on99.jet7thlpp.navigation.SetupNavGraph
+import com.on99.jet7thlpp.ui.theme.MielmaOne
 import com.on99.jet7thlpp.ui.theme.MielmaThree
+import com.on99.jet7thlpp.ui.theme.MielmaTwo
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -354,6 +357,12 @@ private fun CardContent(name: String) {
 //                )
 //                color = if (expanded) MielmaThree else Color.White
 
+            )
+            Spacer(
+                modifier = Modifier
+                    .width(3.dp)
+                    .height(5.dp)
+                    .background(MielmaTwo)
             )
 //            Text(text = "test!", style = MaterialTheme.typography.titleLarge)//引起变化的并非padding的改变而是Text组件的现身
             if (expanded) {
