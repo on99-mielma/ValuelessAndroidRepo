@@ -13,6 +13,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.Switch
 import android.widget.TextView
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         var textViewForLoc:TextView = findViewById(R.id.tV4Loc)
         var temp: CharSequence
         val chipOf4:Chip = findViewById(R.id.chip4)
+        val buttonLow2:Button = findViewById(R.id.butLow2)
         chipOf4.setOnClickListener(View.OnClickListener {
             println("CHIP 4 IS CLICKING")
             val intent = Intent(this,Low0Activity::class.java)
@@ -92,6 +94,10 @@ class MainActivity : AppCompatActivity() {
                     Log.d("myTag", "Security Exception, no location available")
                 }
             }
+        }
+        buttonLow2.setOnClickListener {
+            val intentLow2 = Intent(this,Low2Acyitivity::class.java)
+            startActivity(intentLow2)
         }
 
     }

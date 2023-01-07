@@ -70,6 +70,7 @@
         tools:ignore="Deprecated" />
 
     <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup"
         android:layout_width="97dp"
         android:layout_height="144dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -81,21 +82,33 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip4"
-            android:checkable="false"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:checkable="false" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip5"
-            android:checkable="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:checkable="true" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip6"
-            android:text="@string/initTV"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@string/initTV" />
     </com.google.android.material.chip.ChipGroup>
+
+    <Button
+        android:id="@+id/butLow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buttonInit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.729" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
