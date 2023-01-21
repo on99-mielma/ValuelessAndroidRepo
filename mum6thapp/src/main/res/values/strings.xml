@@ -7,4 +7,6 @@
     <string name="SwitchInit">Switch here!</string>
     <string name="TextViewInit">TextView here!</string>
     <string name="ButtonInit">Button here!</string>
+    <string name="ButtonShowUse">Wait 3.5s</string>
+    <string name="EditTextInit">Wait to Input...</string>
 </resources>

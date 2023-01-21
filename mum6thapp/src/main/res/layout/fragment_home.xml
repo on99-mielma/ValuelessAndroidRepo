@@ -18,8 +18,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.308" />
 
     <Button
         android:id="@+id/button0"
@@ -31,5 +33,27 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.218" />
+        app:layout_constraintVertical_bias="0.081" />
+
+    <EditText
+        android:id="@+id/Edit_Text_ou"
+        android:layout_width="406dp"
+        android:layout_height="407dp"
+        android:ems="10"
+        android:freezesText="false"
+        android:hint="@string/EditTextInit"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine|text"
+        android:maxLength="3000"
+        android:maxLines="10"
+        android:minLines="1"
+        android:scrollbars="vertical"
+        android:text="@string/EditTextInit"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.905" />
 </androidx.constraintlayout.widget.ConstraintLayout>

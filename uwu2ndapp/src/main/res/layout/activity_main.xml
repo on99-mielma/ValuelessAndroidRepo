@@ -67,7 +67,7 @@
         app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switch1"
-        tools:ignore="Deprecated" />
+        />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chipGroup"
